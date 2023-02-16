@@ -25,3 +25,18 @@ const operate = function (operator, a, b) {
             return divide(a,b);
     }
 }
+const populateDisplay = function(num) {
+    displayValue.textContent = displayValue.textContent + num;
+}
+// add event listener to buttons
+const numBtns = document.querySelectorAll('button.num');
+
+let displayValue = document.querySelector('.calculator-display');
+
+numBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+        populateDisplay(e.target.innerText);
+
+    });
+});
+
