@@ -1,0 +1,25 @@
+.calculator-outline {
+    height: 500px;
+    width: 400px;
+    background-color: rgb(10, 150, 206);
+    padding-top: 20px;
+}
+.calculator-display {
+    width: 350px;
+    height: 100px;
+    background-color: black;
+    margin: 0 auto;
+}
+.button-container {
+    width: 350px;
+    height: 375px;
+    display: grid;
+    gap: 5px;
+    grid-template-columns:repeat(4, 1fr);
+    margin: 10px auto;
+}
+.button-container > button {
+    background-color: lightblue;
+    font-size: 35px;
+    color: white;
+}
