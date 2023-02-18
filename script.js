@@ -28,15 +28,31 @@ const operate = function (operator, a, b) {
 const populateDisplay = function(num) {
     displayValue.textContent = displayValue.textContent + num;
 }
+
 // add event listener to buttons
 const numBtns = document.querySelectorAll('button.num');
+const operatorBtns = document.querySelectorAll('button.operator');
 
 let displayValue = document.querySelector('.calculator-display');
+let operator;
+let value1;
 
 numBtns.forEach(btn => {
     btn.addEventListener('click', e => {
-        populateDisplay(e.target.innerText);
-
+        if(operator === undefined) {
+            populateDisplay(e.target.innerText);
+        } else {
+            displayValue.textContent = '';
+            populateDisplay(e.target.innerText);
+        }
     });
 });
 
+operatorBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+        operator = e.target.innerText;
+        value1 = displayValue.textContent;
+        console.log(operator);
+        console.log(value1);
+    });
+});
