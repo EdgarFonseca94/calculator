@@ -26,33 +26,30 @@ const operate = function (operator, a, b) {
     }
 }
 const populateDisplay = function(num) {
-    displayValue.textContent = displayValue.textContent + num;
+    displayString = displayString + num;
+    display.textContent = displayString;
 }
 
 // add event listener to buttons
 const numBtns = document.querySelectorAll('button.num');
 const operatorBtns = document.querySelectorAll('button.operator');
 
-let displayValue = document.querySelector('.calculator-display');
+let display = document.querySelector('.calculator-display');
+let displayString = '';
 let operator;
-let value1;
+const values = [];
 
 numBtns.forEach(btn => {
     btn.addEventListener('click', e => {
-        if(operator === undefined) {
-            populateDisplay(e.target.innerText);
-        } else {
-            displayValue.textContent = '';
-            populateDisplay(e.target.innerText);
-        }
+        populateDisplay(e.target.innerText);
+        console.log(displayString);
     });
 });
 
 operatorBtns.forEach(btn => {
     btn.addEventListener('click', e => {
         operator = e.target.innerText;
-        value1 = displayValue.textContent;
+        displayString = '';
         console.log(operator);
-        console.log(value1);
     });
 });
