@@ -14,7 +14,7 @@ const divide = function (a,b) {
     return +a * +b;
 }
 const operate = function (operator, a, b) {
-    switch(operator.toString) {
+    switch(operator) {
         case "+": 
             return add(a,b);
         case "-": 
@@ -28,8 +28,20 @@ const operate = function (operator, a, b) {
 const populateDisplay = function(num) {
     displayString = displayString + num;
     display.textContent = displayString;
+    return display.textContent;
 }
-
+const saveCurrentDisplayValue = function() {
+    values.push(displayString);
+}
+const callOperate = function() {
+    // only calls operate if theres 2 values in value array
+    saveCurrentDisplayValue();
+    if(values.length < 2) {
+        return;
+    } else {
+        console.log(operate(operator, values[0], values[1]));
+    }
+}
 // add event listener to buttons
 const numBtns = document.querySelectorAll('button.num');
 const operatorBtns = document.querySelectorAll('button.operator');
@@ -42,14 +54,14 @@ const values = [];
 numBtns.forEach(btn => {
     btn.addEventListener('click', e => {
         populateDisplay(e.target.innerText);
-        console.log(displayString);
     });
 });
 
 operatorBtns.forEach(btn => {
     btn.addEventListener('click', e => {
-        operator = e.target.innerText;
+        operator = e.target.value;
+        saveCurrentDisplayValue();
         displayString = '';
-        console.log(operator);
+        console.log(values)
     });
 });
